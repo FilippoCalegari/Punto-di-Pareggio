@@ -75,9 +75,12 @@ namespace Punto_di_Pareggio
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_cva_Click(object sender, EventArgs e)
         {
+            string descrizione = tb_descrizione.Text;
+            double cva = double.Parse(tb_cva.Text);
 
+            list_CostiVariabiliAcquisto.Items.Add($"{descrizione} costa {cva} euro");
         }
 
         private void list_CostiFissiAcquisto_SelectedIndexChanged(object sender, EventArgs e)
@@ -97,6 +100,36 @@ namespace Punto_di_Pareggio
         private void tb_descrizioneCFa_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_cvp_Click_1(object sender, EventArgs e)
+        {
+            string descrizione = tb_descrizione.Text;
+            double cvp = double.Parse(tb_cvp.Text);
+
+            list_CostiVariabiliProduzione.Items.Add($"{descrizione} costa {cvp} euro");
+        }
+
+        private void btn_cfa_Click(object sender, EventArgs e)
+        {
+            string descrizione = tb_descrizione.Text;
+            double cfa = double.Parse(tb_cfa.Text);
+
+            list_CostiFissiAcquisto.Items.Add($"{descrizione} costa {cfa} euro");
+        }
+
+        private void btn_addQ_Click(object sender, EventArgs e)
+        {
+            string descrizione = tb_descrizione.Text;
+            double cfa = double.Parse(tb_cfa.Text);
+            double cvp = double.Parse(tb_cvp.Text);
+            double cva = double.Parse(tb_cva.Text);
+            double cfp = double.Parse(tb_cfp.Text);
+            double q;
+
+            q = (cfa - cfp) / (cvp - cva);
+
+            list_Q.Items.Add($"La quantità di {descrizione} è {Math.Round(q)}");
         }
     }
 }
